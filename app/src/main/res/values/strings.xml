@@ -17,5 +17,10 @@
     <string name="loc_en" translatable="false">EN</string>
     <string name="loc_mk" translatable="false">MK</string>
     <string name="select_lang">Select Language</string>
-    <string name="chooselogin">OR</string>
+    <string name="chooselogin">or</string>
+    <string name="description">Enter Recipe Description</string>
+    <string name="recipetitle">Enter Recipe Title</string>
+    <string name="ingredients">Enter Recipe Ingredients</string>
+    <string name="addnewtitle">Add New Recipe</string>
+
 </resources>
