@@ -63,7 +63,7 @@
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:src="@drawable/ic_ingridients"
+                    android:src="@drawable/ic_ingredients"
                     app:tint="@color/black"
                     android:layout_margin="5dp"/>
                 <TextView
