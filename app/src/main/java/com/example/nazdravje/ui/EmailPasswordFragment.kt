@@ -1,28 +1,40 @@
 package com.example.nazdravje.ui
 
-import android.app.Activity
+
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.WindowCompat
+import com.example.nazdravje.databinding.FragmentEmailPasswordBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class EmailPasswordActivity : Activity() {
+
+class EmailPasswordActivity : AppCompatActivity() {
 
     // [START declare_auth]
     private lateinit var auth: FirebaseAuth
     // [END declare_auth]
+    private lateinit var binding: FragmentEmailPasswordBinding
 
     public override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
-
+        binding = FragmentEmailPasswordBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         // [START initialize_auth]
         // Initialize Firebase Auth
         auth = Firebase.auth
         // [END initialize_auth]
     }
+
+
+
 
     // [START on_start_check_user]
     public override fun onStart() {
