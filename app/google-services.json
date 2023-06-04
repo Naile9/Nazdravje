@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "627965274843",
+    "project_id": "nazdravje-365c9",
+    "storage_bucket": "nazdravje-365c9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627965274843:android:3dc7a536b1b92131c53afe",
+        "android_client_info": {
+          "package_name": "com.example.nazdravje"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627965274843-ibobpb3juml3duect533pe152toss8hh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEHpvlnOPIyqg7fs5MKyt_RvSPv-FIl1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627965274843-ibobpb3juml3duect533pe152toss8hh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627965274843:android:04a1a84a54020b33c53afe",
+        "android_client_info": {
+          "package_name": "com.naile.nazdravje"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627965274843-ibobpb3juml3duect533pe152toss8hh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEHpvlnOPIyqg7fs5MKyt_RvSPv-FIl1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627965274843-ibobpb3juml3duect533pe152toss8hh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
