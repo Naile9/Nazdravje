@@ -9,4 +9,5 @@
     <string name="login">Најава преку</string>
     <string name="login_button">Најава</string>
     <string name="select_lang">Избери Јазик</string>
+    <string name="chooselogin">или</string>
 </resources>
