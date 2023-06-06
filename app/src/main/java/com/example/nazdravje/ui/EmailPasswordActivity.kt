@@ -2,12 +2,17 @@ package com.example.nazdravje.ui
 
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.ViewModelProvider
 import com.example.nazdravje.databinding.FragmentEmailPasswordBinding
+import com.example.nazdravje.ui.dashboard.DashboardViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -31,6 +36,33 @@ class EmailPasswordActivity : AppCompatActivity() {
         // Initialize Firebase Auth
         auth = Firebase.auth
         // [END initialize_auth]
+        val dashboardViewModel =
+            ViewModelProvider(this).get(DashboardViewModel::class.java)
+
+        binding.localeEn.setOnClickListener{
+            setLocale("en-US")
+        }
+        binding.localeMk.setOnClickListener{
+            setLocale("mk-MK")
+        }
+
+        var text : String = ""
+        binding.email.addTextChangedListener (object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int,
+                                       before: Int, count: Int) {
+                text = s.toString()
+                Log.e("TEXT", s.toString())
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                TODO("Not yet implemented")
+            }
+        })
+
     }
 
 
@@ -112,4 +144,12 @@ class EmailPasswordActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "EmailPassword"
     }
+
+    private fun setLocale(locale : String){
+        val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags(locale)
+        AppCompatDelegate.setApplicationLocales(appLocale)
+    }
+
+
+
 }
