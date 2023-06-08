@@ -1,6 +1,7 @@
 package com.example.nazdravje.ui
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -11,6 +12,8 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.ViewModelProvider
+import com.example.nazdravje.GlobalData
+import com.example.nazdravje.MainActivity
 import com.example.nazdravje.databinding.FragmentEmailPasswordBinding
 import com.example.nazdravje.ui.dashboard.DashboardViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -46,22 +49,33 @@ class EmailPasswordActivity : AppCompatActivity() {
             setLocale("mk-MK")
         }
 
-        var text : String = ""
+        var email : String = ""
         binding.email.addTextChangedListener (object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                TODO("Not yet implemented")
-            }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun onTextChanged(s: CharSequence, start: Int,
                                        before: Int, count: Int) {
-                text = s.toString()
-                Log.e("TEXT", s.toString())
+                email = s.toString()
             }
 
-            override fun afterTextChanged(p0: Editable?) {
-                TODO("Not yet implemented")
-            }
+            override fun afterTextChanged(p0: Editable?) {}
         })
+
+        var password : String = ""
+        binding.password.addTextChangedListener (object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(s: CharSequence, start: Int,
+                                       before: Int, count: Int) {
+                password = s.toString()
+            }
+
+            override fun afterTextChanged(p0: Editable?) {}
+        })
+
+        binding.loginButton.setOnClickListener { signIn(email, password) }
+
+
 
     }
 
@@ -136,6 +150,13 @@ class EmailPasswordActivity : AppCompatActivity() {
     }
 
     private fun updateUI(user: FirebaseUser?) {
+
+        if(user !=null){
+            GlobalData.firebaseUser = user
+            val intent: Intent = Intent(this, MainActivity::class.java)
+            this.startActivity(intent)
+        }
+
     }
 
     private fun reload() {
