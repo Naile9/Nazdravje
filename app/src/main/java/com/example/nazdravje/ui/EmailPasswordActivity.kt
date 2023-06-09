@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.nazdravje.GlobalData
 import com.example.nazdravje.MainActivity
 import com.example.nazdravje.databinding.FragmentEmailPasswordBinding
-import com.example.nazdravje.ui.dashboard.DashboardViewModel
+import com.example.nazdravje.ui.dashboard.AddViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -42,7 +42,7 @@ class EmailPasswordActivity : AppCompatActivity() {
         auth = Firebase.auth
         // [END initialize_auth]
         val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+            ViewModelProvider(this).get(AddViewModel::class.java)
 
         binding.localeEn.setOnClickListener{
             setLocale("en-US")

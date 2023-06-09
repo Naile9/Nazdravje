@@ -56,26 +56,7 @@ class HomeFragment : Fragment() {
         )
     }
 
-    fun createRecipe()
-    {
-        val db = Firebase.firestore
-        // Create a new user with a first and last name
-        val recipe = hashMapOf(
-            "first" to "Ada",
-            "last" to "Lovelace",
-            "born" to 1815,
-        )
 
-        // Add a new document with a generated ID
-        db.collection("Recipe")
-            .add(recipe)
-            .addOnSuccessListener { documentReference ->
-                Log.d("Firebase", "DocumentSnapshot added with ID: ${documentReference.id}")
-            }
-            .addOnFailureListener { e ->
-                Log.w("Firebase", "Error adding document", e)
-            }
-    }
 
     private fun readRecipe()
     {
@@ -93,7 +74,8 @@ class HomeFragment : Fragment() {
                     val current = RecipeModel(
                     document.data["Title"].toString(),
                     document.data["Description"].toString(),
-                    document.data["Ingredients"].toString()
+                    document.data["Ingredients"].toString(),
+                    document.data["Author"].toString()
                     )
                     recipes.add(current)
                 }

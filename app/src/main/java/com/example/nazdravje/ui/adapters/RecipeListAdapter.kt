@@ -13,6 +13,7 @@ class RecipeListAdapter(private val dataSet: ArrayList<RecipeModel>):
         fun bind(get: RecipeModel) {
             binding.recipeName.text = get.rName
             binding.recipeDesc.text = get.rDesc
+            binding.recipeAuther.text = get.rAuth
         }
     }
 

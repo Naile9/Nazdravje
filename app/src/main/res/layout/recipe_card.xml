@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipChildren="true"
-        app:cardBackgroundColor="#D5C0A2"
+        app:cardBackgroundColor="#C8E6C9"
         app:cardCornerRadius="15dp"
         app:cardUseCompatPadding="true"
         >
@@ -28,14 +28,9 @@
             android:layout_height="150dp"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_margin="10dp"
+            android:layout_marginHorizontal="10dp"
             >
-            <ImageView
-                android:id="@+id/recipe_image"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:importantForAccessibility="no"
-                android:src="@color/background"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -67,20 +62,27 @@
             android:layout_height="40dp"
             android:layout_marginHorizontal="10dp"
             android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/recipe_date"
-                android:text="10/05/2023 10:30"/>
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+
+
             <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/recipe_auther"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:text="Naile Emini"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+
+                android:scaleType="centerCrop"
+                style="@style/Widget.MaterialComponents.Button"
+                android:src="@drawable/ic_favorite"
+                app:tint="#F44336" />
         </LinearLayout>
         </LinearLayout>
 

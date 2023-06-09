@@ -15,4 +15,5 @@
     <string name="recipetitle">Внеси Наслов</string>
     <string name="addnewtitle">Внеси Нов Рецепт</string>
     <string name="remember_me">Запомни Ме</string>
+    <string name="title_favorites">Зачувани</string>
 </resources>

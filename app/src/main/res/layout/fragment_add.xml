@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.dashboard.DashboardFragment">
+    tools:context=".ui.dashboard.AddFragment">
 
     <TextView
         android:layout_width="match_parent"
@@ -19,43 +19,47 @@
         />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/title"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:hint="@string/recipetitle">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/description"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:hint="@string/ingredients">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ingredients"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:hint="@string/description">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ingredients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/add_recipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title_addNew"
