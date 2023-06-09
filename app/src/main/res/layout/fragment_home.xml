@@ -7,41 +7,7 @@
     android:orientation="vertical"
     android:background="#E6F4F5"
     tools:context=".ui.home.HomeFragment">
-    <com.google.android.flexbox.FlexboxLayout
-        android:background="#1A6CA1AA"
-        android:layout_width="match_parent"
-        android:layout_height="53dp"
-        android:padding="6dp"
-        app:justifyContent="space_around">
 
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5dp"
-            android:background="@drawable/ic_breakfast"
-            android:layout_weight="1"
-            android:layout_columnWeight="1"
-            android:backgroundTint="@color/primary">
-        </ImageButton>
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_columnWeight="1"
-            android:layout_marginHorizontal="5dp"
-            android:background="@drawable/ic_launch"
-            android:backgroundTint="@color/primary">
-        </ImageButton>
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5dp"
-            android:layout_weight="1"
-            android:layout_columnWeight="1"
-            android:background="@drawable/ic_dinner"
-            android:backgroundTint="@color/primary">
-        </ImageButton>
-    </com.google.android.flexbox.FlexboxLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

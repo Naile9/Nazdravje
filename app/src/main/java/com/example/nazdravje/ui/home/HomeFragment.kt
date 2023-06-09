@@ -44,39 +44,14 @@ class HomeFragment : Fragment() {
 //        }
         userList()
         readRecipe()
-        binding.recipeList.layoutManager = LinearLayoutManager(this.context)
-        adapter = RecipeListAdapter(user)
-        binding.recipeList.adapter = adapter
+
 
         return root
     }
 
     private fun userList(){
         user = arrayListOf(
-           RecipeModel(
-               "kolac so portokal",
-               "Se turat kilo portokali vtava, edna casa ceden sok od portokal,pecivo, jajca, brasno, maslo i se gotvi",
-               "Naile Emini",
-               "denes"
-           ),
-            RecipeModel(
-                "kolac so portokal",
-                "Se turat kilo portokali vtava, edna casa ceden sok od portokal,pecivo, jajca, brasno, maslo i se gotvi",
-                "Naile Emini",
-                "denes"
-            ),
-            RecipeModel(
-                "kolac so portokal",
-                "Se turat kilo portokali vtava, edna casa ceden sok od portokal,pecivo, jajca, brasno, maslo i se gotvi",
-                "Naile Emini",
-                "denes"
-            ),
-            RecipeModel(
-                "kolac so portokal",
-                "Se turat kilo portokali vtava, edna casa ceden sok od portokal,pecivo, jajca, brasno, maslo i se gotvi",
-                "Naile Emini",
-                "denes"
-            )
+
 
         )
     }
@@ -105,12 +80,26 @@ class HomeFragment : Fragment() {
     private fun readRecipe()
     {
         val db = Firebase.firestore
+
+        val recipes = arrayListOf<RecipeModel>()
+
+
         db.collection("Recipe")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
                     Log.d("Firebase", "${document.id} => ${document.data}")
+
+                    val current = RecipeModel(
+                    document.data["Title"].toString(),
+                    document.data["Description"].toString(),
+                    document.data["Ingredients"].toString()
+                    )
+                    recipes.add(current)
                 }
+                binding.recipeList.layoutManager = LinearLayoutManager(this.context)
+                adapter = RecipeListAdapter(recipes)
+                binding.recipeList.adapter = adapter
             }
             .addOnFailureListener { exception ->
                 Log.w("Firebase", "Error getting documents.", exception)
