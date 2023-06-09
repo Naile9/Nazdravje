@@ -12,6 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nazdravje.databinding.FragmentHomeBinding
 import com.example.nazdravje.ui.adapters.RecipeListAdapter
 import com.example.nazdravje.ui.adapters.RecipeModel
+import android.util.Log
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+
 
 class HomeFragment : Fragment() {
 
@@ -39,6 +43,7 @@ class HomeFragment : Fragment() {
 //            textView.text = it
 //        }
         userList()
+        readRecipe()
         binding.recipeList.layoutManager = LinearLayoutManager(this.context)
         adapter = RecipeListAdapter(user)
         binding.recipeList.adapter = adapter
@@ -74,6 +79,43 @@ class HomeFragment : Fragment() {
             )
 
         )
+    }
+
+    fun createRecipe()
+    {
+        val db = Firebase.firestore
+        // Create a new user with a first and last name
+        val recipe = hashMapOf(
+            "first" to "Ada",
+            "last" to "Lovelace",
+            "born" to 1815,
+        )
+
+        // Add a new document with a generated ID
+        db.collection("Recipe")
+            .add(recipe)
+            .addOnSuccessListener { documentReference ->
+                Log.d("Firebase", "DocumentSnapshot added with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w("Firebase", "Error adding document", e)
+            }
+    }
+
+    private fun readRecipe()
+    {
+        val db = Firebase.firestore
+        db.collection("Recipe")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d("Firebase", "${document.id} => ${document.data}")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w("Firebase", "Error getting documents.", exception)
+            }
+
     }
 
 
