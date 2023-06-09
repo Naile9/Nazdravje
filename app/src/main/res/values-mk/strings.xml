@@ -14,4 +14,5 @@
     <string name="ingredients">Внеси Состојки</string>
     <string name="recipetitle">Внеси Наслов</string>
     <string name="addnewtitle">Внеси Нов Рецепт</string>
+    <string name="remember_me">Запомни Ме</string>
 </resources>

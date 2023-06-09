@@ -22,5 +22,6 @@
     <string name="recipetitle">Enter Recipe Title</string>
     <string name="ingredients">Enter Recipe Ingredients</string>
     <string name="addnewtitle">Add New Recipe</string>
+    <string name="remember_me">Remember Me</string>
 
 </resources>

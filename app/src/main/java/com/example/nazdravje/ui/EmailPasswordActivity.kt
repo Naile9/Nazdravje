@@ -35,6 +35,8 @@ class EmailPasswordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = FragmentEmailPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        supportActionBar?.hide()
         // [START initialize_auth]
         // Initialize Firebase Auth
         auth = Firebase.auth
