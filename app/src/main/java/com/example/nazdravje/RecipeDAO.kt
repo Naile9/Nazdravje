@@ -1,5 +1,6 @@
 package com.example.nazdravje
 
+import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -8,17 +9,18 @@ import androidx.room.Update
 import com.example.nazdravje.ui.adapters.RecipeModel
 import kotlinx.coroutines.flow.Flow
 
-interface RecipeDAO
-{
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addRecipe(recipe: RecipeModel)
+    @Dao
+    interface RecipeDAO {
 
-    @Query("SELECT * FROM recipes")
-    fun getRecipes(): Flow<List<RecipeModel>>
+        @Insert
+        fun insertRecipe(recipe: Recipe)
 
-    @Update
-    suspend fun updateRecipe(note: RecipeModel)
+        @Query("Select * from recipes")
+        fun gelAllRecipe(): List<Recipe>
 
-    @Delete
-    suspend fun deleteRecipe(note: RecipeModel)
-}
+        @Update
+        fun updateRecipe(recipe: Recipe)
+
+        @Delete
+        fun deleteRecipe(recipe: Recipe)
+    }

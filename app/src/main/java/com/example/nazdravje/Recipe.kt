@@ -7,10 +7,9 @@ import java.util.Date
 
 
 @Entity(tableName = "recipes")
-data class Note(
-    @PrimaryKey
-    @ColumnInfo(name = "dateAdded")
-    val dateAdded: Date,
-    @ColumnInfo(name = "noteText")
-    val noteText: String
-)
+data class Recipe(
+    @PrimaryKey(autoGenerate = true)
+    var rName: String,
+    val rDesc: String,
+    var rIngredients: String,
+    val rAuth: String)

@@ -11,34 +11,26 @@ import com.example.nazdravje.ui.adapters.RecipeModel
     version = 1,
     exportSchema = true
 )
-abstract class RecipeDatabase:RoomDatabase(){
-    abstract fun recipeDao(): RecipeDAO
+abstract class RecipeDatabase : RoomDatabase() {
+
+    abstract fun recipeDao() : RecipeDAO
 
     companion object {
-
-        @Volatile
         private var INSTANCE: RecipeDatabase? = null
 
-        fun getDatabase(context: Context): RecipeDatabase {
-            // if the INSTANCE is not null, then return it,
-            // if it is, then create the database
+        fun getInstance(context: Context): RecipeDatabase? {
             if (INSTANCE == null) {
-                synchronized(this) {
-                    // Pass the database to the INSTANCE
-                    INSTANCE = buildDatabase(context)
+                synchronized(RecipeDatabase::class) {
+                    INSTANCE = Room.databaseBuilder(context.applicationContext,
+                        RecipeDatabase::class.java, "recipe.db").allowMainThreadQueries()
+                        .build()
                 }
             }
-            // Return database.
-            return INSTANCE!!
+            return INSTANCE
         }
 
-        private fun buildDatabase(context: Context): RecipeDatabase {
-            return Room.databaseBuilder(
-                context.applicationContext,
-                RecipeDatabase::class.java,
-                "notes_database"
-            )
-                .build()
+        fun destroyInstance() {
+            INSTANCE = null
         }
     }
 }
