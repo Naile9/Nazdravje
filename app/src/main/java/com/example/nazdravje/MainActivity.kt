@@ -1,12 +1,14 @@
 package com.example.nazdravje
 
 import android.os.Bundle
+import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.nazdravje.databinding.ActivityMainBinding
 import com.example.nazdravje.ui.dashboard.AddFragment
 import com.example.nazdravje.ui.home.HomeFragment
+import com.example.nazdravje.ui.notifications.FavoritesFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,12 +20,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
         setupClickListener()
-//        loadFragment(HomeFragment())
-
-
-
     }
 
 
@@ -38,7 +35,12 @@ class MainActivity : AppCompatActivity() {
                     AddFragment()
                 }
                 else -> {
-                    HomeFragment()
+                    if (GlobalData.isAnonymous){
+                        Toast.makeText(binding.root.context, "Anonymous users cant save data", Toast.LENGTH_SHORT)
+                        HomeFragment()
+                    }else {
+                        FavoritesFragment()
+                    }
                 }
             }
             loadFragment(fragment)

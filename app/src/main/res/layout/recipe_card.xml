@@ -78,7 +78,7 @@
             <ImageButton
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-
+                android:id="@+id/recipe_fav"
                 android:scaleType="centerCrop"
                 style="@style/Widget.MaterialComponents.Button"
                 android:src="@drawable/ic_favorite"

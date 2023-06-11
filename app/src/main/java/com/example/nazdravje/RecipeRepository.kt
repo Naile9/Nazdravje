@@ -2,6 +2,7 @@ package com.example.nazdravje
 
 import android.content.Context
 import android.os.AsyncTask
+import android.util.Log
 
 class RecipeRepository(context: Context) {
     var db: RecipeDAO = RecipeDatabase.getInstance(context)?.recipeDao()!!
@@ -15,16 +16,18 @@ class RecipeRepository(context: Context) {
     // Insert new user
     fun addRecipe(recipe: Recipe) {
         insertAsyncTask(db).execute(recipe)
+        Log.e("ROOM", recipe.toString())
     }
 
     // update user
-    fun updateUser(recipe: Recipe) {
+    fun updateRecipe(recipe: Recipe) {
         db.updateRecipe(recipe)
     }
 
     // Delete user
-    fun deleteUser(recipe: Recipe) {
-        db.deleteRecipe(recipe)
+    fun deleteRecipe() {// recipe: Recipe
+//        db.deleteRecipe(recipe)
+        db.delete()
     }
 
     private class insertAsyncTask internal constructor(private val recipeDao: RecipeDAO) :

@@ -1,15 +1,17 @@
 package com.example.nazdravje
 
 import android.content.Context
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.nazdravje.ui.adapters.RecipeModel
 
 @Database(
-    entities = [RecipeModel::class],
+    entities = [Recipe::class],
     version = 1,
-    exportSchema = true
+    exportSchema = true,
+
 )
 abstract class RecipeDatabase : RoomDatabase() {
 
@@ -22,7 +24,7 @@ abstract class RecipeDatabase : RoomDatabase() {
             if (INSTANCE == null) {
                 synchronized(RecipeDatabase::class) {
                     INSTANCE = Room.databaseBuilder(context.applicationContext,
-                        RecipeDatabase::class.java, "recipe.db").allowMainThreadQueries()
+                        RecipeDatabase::class.java, "recipes.db").allowMainThreadQueries()
                         .build()
                 }
             }
@@ -32,5 +34,6 @@ abstract class RecipeDatabase : RoomDatabase() {
         fun destroyInstance() {
             INSTANCE = null
         }
+
     }
 }

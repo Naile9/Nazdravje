@@ -1,18 +1,15 @@
 package com.example.nazdravje
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.example.nazdravje.ui.adapters.RecipeModel
-import kotlinx.coroutines.flow.Flow
 
-    @Dao
+@Dao
     interface RecipeDAO {
 
-        @Insert
+        @Insert(onConflict = OnConflictStrategy.REPLACE)
         fun insertRecipe(recipe: Recipe)
 
         @Query("Select * from recipes")
@@ -21,6 +18,8 @@ import kotlinx.coroutines.flow.Flow
         @Update
         fun updateRecipe(recipe: Recipe)
 
-        @Delete
-        fun deleteRecipe(recipe: Recipe)
+//        @Delete
+//        fun deleteRecipe(recipe: Recipe)
+        @Query("DELETE FROM recipes")
+        open fun delete()
     }
