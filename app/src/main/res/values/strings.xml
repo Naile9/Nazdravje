@@ -24,6 +24,7 @@
     <string name="addnewtitle">Add New Recipe</string>
     <string name="remember_me">Remember Me</string>
     <string name="title_favorites">Favorites</string>
+    <string name="facebook_app_id">3407072229554540</string>
 
 
 </resources>

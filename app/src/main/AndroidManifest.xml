@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Nazdravje"
         tools:targetApi="31">
         <activity
-            android:name=".ui.EmailPasswordActivity"
+            android:name=".ui.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.Nazdravje" >
             <intent-filter>
@@ -25,6 +25,9 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"/>
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
 
     </application>
 
