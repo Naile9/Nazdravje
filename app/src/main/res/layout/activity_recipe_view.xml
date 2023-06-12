@@ -13,16 +13,7 @@
         android:orientation="horizontal"
         android:background="@color/primary">
 
-        <ImageButton
-            android:id="@+id/back_button"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/ic_back"
-            android:scaleType="centerInside"
-            android:background="@color/primary"
-            android:layout_gravity="center"/>
-
-        <TextView
+          <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Recipe Name"
