@@ -19,7 +19,7 @@ class RecipeListAdapter(private var dataSet: ArrayList<RecipeModel>):
             val repo = RecipeRepository(binding.root.context)
             binding.recipeName.text = get.rName
             binding.recipeDesc.text = get.rDesc
-            binding.recipeAuther.text = get.rAuth
+            binding.recipeAuthor.text = get.rAuth
             binding.recipeFav.setOnClickListener {
                 val recipe = Recipe(rName = get.rName, rDesc = get.rDesc, rAuth = get.rAuth, rIngredients = get.rIngredients)
                 repo.addRecipe(recipe = recipe)

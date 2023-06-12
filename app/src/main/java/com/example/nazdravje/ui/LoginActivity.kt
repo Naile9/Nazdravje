@@ -56,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
         binding = FragmentLoginBinding.inflate(layoutInflater)
         FacebookSdk.sdkInitialize(this)
         setContentView(binding.root)
-
+//        println("Facebook hash key: ${FacebookSdk.getApplicationSignature(this)}")
 
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -108,7 +108,31 @@ class LoginActivity : AppCompatActivity() {
         })
 
 
-        binding.loginButton.setOnClickListener {signIn(email, password)}
+
+        binding.loginButton.setOnClickListener {
+
+            val sharedPreferences = getSharedPreferences("LoginCredentials", MODE_PRIVATE)
+            val myEdit = sharedPreferences.edit()
+
+            if(binding.rememberMe.isChecked){
+                myEdit.putString("email", email)
+                myEdit.putString("password", password)
+                myEdit.apply()
+            }
+
+
+            signIn(email, password)
+
+        }
+
+        val sh = getSharedPreferences("LoginCredentials", MODE_PRIVATE)
+        val s1 = sh.getString("email", "")
+        val s2 = sh.getString("password", "")
+
+        if (s1 != "" && s2 != "")
+        {
+            signIn(s1!!,s2!!)
+        }
 
         binding.loginGoogle.setOnClickListener {signInGoogle()}
         binding.loginFacebook.setOnClickListener {LoginManager.getInstance().logInWithReadPermissions(this, listOf("email", "public_profile"))
@@ -130,6 +154,7 @@ class LoginActivity : AppCompatActivity() {
             },)}
 
         binding.loginGuest.setOnClickListener {signInAnonymously()}
+
 
     }
 
