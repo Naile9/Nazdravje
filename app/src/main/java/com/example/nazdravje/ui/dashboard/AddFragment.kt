@@ -9,7 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.nazdravje.MainActivity
 import com.example.nazdravje.databinding.FragmentAddBinding
+import com.example.nazdravje.ui.home.HomeFragment
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -67,6 +69,7 @@ class AddFragment : Fragment() {
         })
         binding.addRecipe.setOnClickListener{
             createRecipe()
+            (activity as MainActivity).loadFragment(HomeFragment())
         }
 //
         return root

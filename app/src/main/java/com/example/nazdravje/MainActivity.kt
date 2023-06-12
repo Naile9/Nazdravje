@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadFragment(fragment: Fragment) {
+    public fun loadFragment(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.nav_host_fragment_activity_main, fragment)

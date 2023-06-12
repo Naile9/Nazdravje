@@ -30,6 +30,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
@@ -284,6 +286,11 @@ class LoginActivity : AppCompatActivity() {
     private fun updateUI(user: FirebaseUser?) {
 
         if(user !=null){
+            var firebaseAnalytics: FirebaseAnalytics = Firebase.analytics
+            val bundle = Bundle()
+            bundle.putString(FirebaseAnalytics.Param.METHOD, "login")
+            firebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN, bundle)
+
             GlobalData.firebaseUser = user
             val intent: Intent = Intent(this, MainActivity::class.java)
             this.startActivity(intent)
