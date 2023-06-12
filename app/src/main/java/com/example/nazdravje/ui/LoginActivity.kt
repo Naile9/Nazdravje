@@ -14,6 +14,7 @@ import androidx.core.view.WindowCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.nazdravje.GlobalData
 import com.example.nazdravje.MainActivity
+import com.example.nazdravje.R
 import com.example.nazdravje.databinding.FragmentLoginBinding
 import com.example.nazdravje.ui.dashboard.AddViewModel
 import com.facebook.AccessToken
@@ -28,6 +29,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
@@ -35,6 +37,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
 
 
 class LoginActivity : AppCompatActivity() {
@@ -82,7 +85,7 @@ class LoginActivity : AppCompatActivity() {
         binding.localeMk.setOnClickListener{
             setLocale("mk-MK")
         }
-
+        FirebaseMessaging.getInstance().isAutoInitEnabled = true
         var email : String = ""
         binding.email.addTextChangedListener (object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -109,19 +112,38 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-        binding.loginButton.setOnClickListener {
-
-            val sharedPreferences = getSharedPreferences("LoginCredentials", MODE_PRIVATE)
-            val myEdit = sharedPreferences.edit()
-
-            if(binding.rememberMe.isChecked){
-                myEdit.putString("email", email)
-                myEdit.putString("password", password)
-                myEdit.apply()
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
             }
 
+            // Get new FCM registration token
+            val token = task.result
 
-            signIn(email, password)
+            // Log and toast
+//            val msg = getString(R.string.msg_token_fmt, token)
+            Log.d("Token", "Token:$token")
+//            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+        })
+
+
+        binding.loginButton.setOnClickListener {
+            if(email.length > 6 && password.length>=6) {
+                val sharedPreferences = getSharedPreferences("LoginCredentials", MODE_PRIVATE)
+                val myEdit = sharedPreferences.edit()
+
+                if (binding.rememberMe.isChecked) {
+                    myEdit.putString("email", email)
+                    myEdit.putString("password", password)
+                    myEdit.apply()
+                }
+
+
+                signIn(email, password)
+            }else{
+                Toast.makeText(this, "Enter valid login details", Toast.LENGTH_SHORT).show()
+            }
 
         }
 

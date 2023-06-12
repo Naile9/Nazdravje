@@ -20,5 +20,12 @@ class RecipeView : AppCompatActivity() {
         binding.recipeName.text = GlobalData.currentRecipe?.rName!!
         binding.recipeDesc.text = GlobalData.currentRecipe?.rDesc!!
         binding.ingredients.text = GlobalData.currentRecipe?.rIngredients!!
+        binding.recipeFav.setOnClickListener {
+            val repo = RecipeRepository(binding.root.context)
+            val recipe = GlobalData.currentRecipe
+            if (recipe != null) {
+                repo.addRecipe(recipe = recipe)
+            }
+        }
     }
 }
