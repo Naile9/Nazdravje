@@ -12,22 +12,26 @@
         android:theme="@style/Theme.Nazdravje"
         tools:targetApi="31">
         <activity
+            android:name=".RecipeView"
+            android:exported="false" />
+        <activity
             android:name=".ui.LoginActivity"
             android:exported="true"
-            android:theme="@style/Theme.Nazdravje" >
+            android:theme="@style/Theme.Nazdravje">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"/>
+            android:label="@string/app_name" />
 
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
-
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
     </application>
 
 </manifest>

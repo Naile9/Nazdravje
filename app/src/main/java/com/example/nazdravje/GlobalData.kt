@@ -6,4 +6,6 @@ object GlobalData {
 
     var firebaseUser: FirebaseUser? = null
     var isAnonymous: Boolean = false
+
+    var currentRecipe: Recipe? = null
 }

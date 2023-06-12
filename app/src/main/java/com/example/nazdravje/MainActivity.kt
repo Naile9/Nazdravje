@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
         setupClickListener()
+        loadFragment(HomeFragment())
 
         binding.logout.setOnClickListener{
 
@@ -68,7 +69,7 @@ class MainActivity : AppCompatActivity() {
     private fun loadFragment(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.container, fragment)
+            .replace(R.id.nav_host_fragment_activity_main, fragment)
             .commit()
     }
 
